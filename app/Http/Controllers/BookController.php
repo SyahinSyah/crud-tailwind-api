@@ -23,9 +23,7 @@ class BookController extends Controller
     // public function store(Request $request)
     // {
     //     // dd($request);
-    //     // Book::create($request->except(['_tokens']));
-
-
+    
     //     // // explaination (long code)
     //     // $book = new Book();
     //     // $book->name = $request->name;
@@ -47,6 +45,50 @@ class BookController extends Controller
 
         return redirect('books');
     }
+
+    public function update(Book $book)
+    {
+        return view('book.update' , [
+            'book' => $book 
+        ]);
+    }
+
+    // or
+
+    // public function update($book)
+    // {
+    //     $bookObj = Book::find($book);
+
+    //     return  view('book.update' , [
+    //         'book' =>$bookObj
+    //     ]);
+
+    // }
+
+
+    // public function updated(Book $book , BookRequest $request)
+    // {
+    //     $book->update($request->except('_tokens'));
+
+    //     return redirect('/books');
+    // }
+    
+    // or
+
+    public function updated(BookRequest $request, $book)
+    {
+        $newbook = Book::find($book);
+
+        $newbook->name = $request->name;
+        $newbook->quantity = $request->quantity;
+        $newbook->description = $request->description;
+        $newbook->save();
+
+        return redirect('/books');
+
+    }
+
+
 
 
 }

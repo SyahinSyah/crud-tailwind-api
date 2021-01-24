@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/books', [BookController::class , 'index']);
 Route::get('/create' , [BookController::class, 'create']);
 Route::post('/created' , [BookController::class , 'store']);
+Route::patch('/books/{book}', [BookController::class , 'updated']);
+Route::get('books/{book}', [BookController::class ,'update']);
 Route::redirect('/', '/books', 301);
 
 // Route::get('/', function () {
