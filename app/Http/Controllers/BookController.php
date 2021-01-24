@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
 use Illuminate\Http\Request;
 use App\Models\Book;
 
@@ -19,23 +20,34 @@ class BookController extends Controller
         return view('book.create');
     }
 
-    public function store(Request $request)
+    // public function store(Request $request)
+    // {
+    //     // dd($request);
+    //     // Book::create($request->except(['_tokens']));
+
+
+    //     // // explaination (long code)
+    //     // $book = new Book();
+    //     // $book->name = $request->name;
+    //     // $book->quantity = $request->quantity;
+    //     // $book->description = $request->description;
+    //     // $book->save();
+       
+
+    //     // or
+
+    //     Book::create($request->except([ '_tokens']));
+
+    //     return redirect('/books');
+    // }
+
+    public function store(BookRequest $request)
     {
-        // dd($request);
-        // Book::create($request->except(['_tokens']));
+        Book::create($request->except('_tokens'));
 
-
-        // explaination (long code)
-        $book = new Book();
-        $book->name = $request->name;
-        $book->quantity = $request->quantity;
-        $book->description = $request->description;
-        $book->save();
-        return redirect('/books');
-
-
-
-
-
+        return redirect('books');
     }
+
+
 }
+
