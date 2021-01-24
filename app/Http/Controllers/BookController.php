@@ -66,28 +66,32 @@ class BookController extends Controller
     // }
 
 
-    // public function updated(Book $book , BookRequest $request)
-    // {
-    //     $book->update($request->except('_tokens'));
+    public function updated(Book $book , BookRequest $request)
+    {
+        $book->update($request->except('_tokens'));
 
-    //     return redirect('/books');
-    // }
+        return redirect('/books');
+    }
     
     // or
 
-    public function updated(BookRequest $request, $book)
-    {
-        $newbook = Book::find($book);
+    // public function updated(BookRequest $request, $book)
+    // {
+    //     $newbook = Book::find($book);
 
-        $newbook->name = $request->name;
-        $newbook->quantity = $request->quantity;
-        $newbook->description = $request->description;
-        $newbook->save();
+    //     $newbook->name = $request->name;
+    //     $newbook->quantity = $request->quantity;
+    //     $newbook->description = $request->description;
+    //     $newbook->save();
 
-        return redirect('/books');
+    //     return redirect('/books');
 
-    }
-
+    // }
+        public function destroy(Book $book)
+        {
+            $book->delete();
+            return redirect('/books');
+        }
 
 
 

@@ -18,6 +18,7 @@ Route::get('/create' , [BookController::class, 'create']);
 Route::post('/created' , [BookController::class , 'store']);
 Route::patch('/books/{book}', [BookController::class , 'updated']);
 Route::get('books/{book}', [BookController::class ,'update']);
+Route::delete('/books/{book}' , [BookController::class , 'destroy']);
 Route::redirect('/', '/books', 301);
 
 // Route::get('/', function () {
